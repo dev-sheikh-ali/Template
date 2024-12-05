@@ -1,3 +1,5 @@
+# src/pages/views.py
+
 from django.shortcuts import render
 from django.views.generic.base import View
 
@@ -13,3 +15,13 @@ class CustomErrorView(View):
         if 'status_code' in initkwargs:
             cls.status_code = initkwargs.pop('status_code')
         return super().as_view(**initkwargs)
+
+# Add views for About Us, Contact, and Services pages
+def about_us(request):
+    return render(request, "pages/AboutUsPage.html")
+
+def contact(request):
+    return render(request, "pages/ContactPage.html")
+
+def services(request):
+    return render(request, "pages/ServicesPage.html")

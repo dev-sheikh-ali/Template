@@ -1,0 +1,99 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Our Services{% endblock %}
+
+{% block content %}
+<section class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-6xl bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700 p-6 space-y-8 sm:p-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white">Our Services</h2>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+                Explore the services we offer to empower your business with cutting-edge technology and expert solutions.
+            </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Service 1 -->
+            <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-blue-100 dark:bg-blue-900">
+                    <svg class="w-8 h-8 text-blue-600 dark:text-blue-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 1.5a.75.75 0 01.75.75v7.25h7.25a.75.75 0 110 1.5h-7.25v7.25a.75.75 0 01-1.5 0v-7.25H2.75a.75.75 0 010-1.5H9.25V2.25A.75.75 0 0110 1.5z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Custom Development</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                    Tailored software solutions designed to fit your unique business needs.
+                </p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-green-100 dark:bg-green-900">
+                    <svg class="w-8 h-8 text-green-600 dark:text-green-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.707 3.293a1 1 0 00-1.414 0L3.586 8H3a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1v-.586l4.707-4.707a1 1 0 000-1.414l-7-7z"/>
+                        <path d="M7 13a1 1 0 011-1h1a1 1 0 010 2H8a1 1 0 01-1-1z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Cloud Integration</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                    Seamlessly integrate your systems with cloud platforms for scalability.
+                </p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-yellow-100 dark:bg-yellow-900">
+                    <svg class="w-8 h-8 text-yellow-600 dark:text-yellow-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 9a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V9zM2 4a2 2 0 012-2h12a2 2 0 012 2v2H2V4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Cybersecurity</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                    Protect your business with robust security solutions and best practices.
+                </p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-red-100 dark:bg-red-900">
+                    <svg class="w-8 h-8 text-red-600 dark:text-red-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M17.707 9.293a1 1 0 00-1.414 0L10 15.586 3.707 9.293a1 1 0 00-1.414 1.414l7 7a1 1 0 001.414 0l7-7a1 1 0 000-1.414z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">IT Support</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                    24/7 support to keep your business running smoothly and efficiently.
+                </p>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-purple-100 dark:bg-purple-900">
+                    <svg class="w-8 h-8 text-purple-600 dark:text-purple-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5 2a1 1 0 00-1 1v14a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1H5zM4 9h12V5H4v4zM4 15h12v-4H4v4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Data Analytics</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                    Gain actionable insights with our advanced analytics tools and strategies.
+                </p>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-md dark:bg-gray-800">
+                <div class="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-100 dark:bg-teal-900">
+                    <svg class="w-8 h-8 text-teal-600 dark:text-teal-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 1.5a.75.75 0 01.75.75v7.25h7.25a.75.75 0 110 1.5h-7.25v7.25a.75.75 0 01-1.5 0v-7.25H2.75a.75.75 0 010-1.5H9.25V2.25A.75.75 0 0110 1.5z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Business Automation</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                    Streamline your operations with advanced automation solutions.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

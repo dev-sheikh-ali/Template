@@ -1,0 +1,60 @@
+{% extends 'home/base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<section class="bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-4xl bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700 p-6 space-y-8 sm:p-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white">About Us</h2>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+                At SaaS Foundation Tech, we innovate, collaborate, and empower businesses to thrive in a digital-first world. Our mission is to redefine productivity and growth through cutting-edge technology.
+            </p>
+        </div>
+
+        <!-- Video Section -->
+        <div class="relative overflow-hidden rounded-lg shadow-lg mb-16">
+            <iframe 
+                class="w-full h-64 sm:h-80 md:h-96 lg:h-[500px]" 
+                src="https://www.youtube.com/embed/your-video-id" 
+                title="About Us Video" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Core Values -->
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+            <div class="flex flex-col items-center text-center">
+                <div class="w-20 h-20 mb-4 rounded-full bg-blue-100 flex justify-center items-center dark:bg-blue-900">
+                    <img class="w-10 h-10" src="/static/images/innovation.svg" alt="Innovation Icon">
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Innovation</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                    Pioneering technology that transforms the way businesses operate and grow.
+                </p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+                <div class="w-20 h-20 mb-4 rounded-full bg-green-100 flex justify-center items-center dark:bg-green-900">
+                    <img class="w-10 h-10" src="/static/images/community.svg" alt="Community Icon">
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Community</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                    Fostering collaboration to build meaningful and lasting connections.
+                </p>
+            </div>
+            <div class="flex flex-col items-center text-center">
+                <div class="w-20 h-20 mb-4 rounded-full bg-yellow-100 flex justify-center items-center dark:bg-yellow-900">
+                    <img class="w-10 h-10" src="/static/images/sustainability.svg" alt="Sustainability Icon">
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Sustainability</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-400">
+                    Designing solutions with a focus on long-term impact and eco-conscious practices.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'home/team.html' %}
+{% endblock %}
