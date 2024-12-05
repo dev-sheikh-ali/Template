@@ -1,55 +1,28 @@
+<!-- home/featurelist.html -->
+
 <section class="bg-white dark:bg-gray-900 py-12">
     <div class="max-w-screen-xl mx-auto px-4">
         <div class="text-center mb-12">
             <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white">
-                The most trusted cryptocurrency platform
+                The most trusted platform
             </h2>
             <p class="mt-2 text-gray-500 dark:text-gray-400">
-                Here are a few reasons why you should choose Flowbite
+                Here are a few reasons why you should choose us
             </p>
         </div>
         <div class="grid gap-10 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
-            <!-- Secure Storage -->
+            {% for feature in features %}
             <div class="flex flex-col items-center text-center">
                 <div class="flex items-center justify-center w-12 h-12 mb-4 text-blue-600 bg-blue-100 rounded-full">
-                    <svg class="w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2a9.94 9.94 0 00-7.07 2.93A9.94 9.94 0 002 12c0 2.66 1.03 5.19 2.93 7.07A9.94 9.94 0 0012 22a9.94 9.94 0 007.07-2.93A9.94 9.94 0 0022 12a9.94 9.94 0 00-2.93-7.07A9.94 9.94 0 0012 2zm1.41 15.41l-4.59-4.59V5h2v6.59l3.59 3.59L13.41 17.41z"/>
-                    </svg>
+                    {{ feature.icon_svg|safe }}
                 </div>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Secure storage</h3>
-                <p class="text-gray-500 dark:text-gray-400 mb-4">We store the vast majority of the digital assets in secure offline storage.</p>
-                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
-                    Learn how to keep your funds safe →
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{{ feature.title }}</h3>
+                <p class="text-gray-500 dark:text-gray-400 mb-4">{{ feature.description }}</p>
+                <a href="{{ feature.link_url }}" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                    {{ feature.link_text }} →
                 </a>
             </div>
-
-            <!-- Insurance -->
-            <div class="flex flex-col items-center text-center">
-                <div class="flex items-center justify-center w-12 h-12 mb-4 text-blue-600 bg-blue-100 rounded-full">
-                    <svg class="w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2a9.94 9.94 0 00-7.07 2.93A9.94 9.94 0 002 12c0 2.66 1.03 5.19 2.93 7.07A9.94 9.94 0 0012 22a9.94 9.94 0 007.07-2.93A9.94 9.94 0 0022 12a9.94 9.94 0 00-2.93-7.07A9.94 9.94 0 0012 2zm1.41 15.41l-4.59-4.59V5h2v6.59l3.59 3.59L13.41 17.41z"/>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Insurance</h3>
-                <p class="text-gray-500 dark:text-gray-400 mb-4">Flowbite maintains crypto insurance and all USD cash balances are covered.</p>
-                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
-                    Learn how your crypto is covered →
-                </a>
-            </div>
-
-            <!-- Best Practices -->
-            <div class="flex flex-col items-center text-center">
-                <div class="flex items-center justify-center w-12 h-12 mb-4 text-blue-600 bg-blue-100 rounded-full">
-                    <svg class="w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2a9.94 9.94 0 00-7.07 2.93A9.94 9.94 0 002 12c0 2.66 1.03 5.19 2.93 7.07A9.94 9.94 0 0012 22a9.94 9.94 0 007.07-2.93A9.94 9.94 0 0022 12a9.94 9.94 0 00-2.93-7.07A9.94 9.94 0 0012 2zm1.41 15.41l-4.59-4.59V5h2v6.59l3.59 3.59L13.41 17.41z"/>
-                    </svg>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Best practices</h3>
-                <p class="text-gray-500 dark:text-gray-400 mb-4">Flowbite marketplace supports a variety of the most popular digital currencies.</p>
-                <a href="#" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
-                    How to implement best practices →
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

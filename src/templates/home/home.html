@@ -3,7 +3,32 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+    <!-- Hero Section -->
     {% include 'home/hero.html' %}
+
+    <!-- Feature List Section -->
     {% include 'home/featurelist.html' %}
+
+    <!-- Newsletter Section -->
     {% include 'home/newsletter.html' %}
+
+    <!-- Display messages if any -->
+    {% if messages %}
+        <div class="my-6 max-w-screen-lg mx-auto px-4">
+            {% for message in messages %}
+                <div class="p-4 mb-4 text-sm rounded-lg 
+                    {% if message.tags == 'success' %}
+                        text-green-700 bg-green-100 dark:bg-green-200 dark:text-green-800
+                    {% elif message.tags == 'info' %}
+                        text-blue-700 bg-blue-100 dark:bg-blue-200 dark:text-blue-800
+                    {% elif message.tags == 'warning' %}
+                        text-yellow-700 bg-yellow-100 dark:bg-yellow-200 dark:text-yellow-800
+                    {% elif message.tags == 'error' %}
+                        text-red-700 bg-red-100 dark:bg-red-200 dark:text-red-800
+                    {% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}

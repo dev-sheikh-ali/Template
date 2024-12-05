@@ -1,3 +1,5 @@
+# custom_auth/models.py
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -11,6 +13,7 @@ class CustomUser(AbstractUser):
     ]
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES, default='other')
     consent_given = models.BooleanField(default=True)
+    subscribed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.username
