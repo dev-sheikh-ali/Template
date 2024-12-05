@@ -1,0 +1,41 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Delete Account{% endblock %}
+
+{% block content %}
+<section class="bg-gray-50 dark:bg-gray-900 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700 p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h2 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            Delete Account
+        </h2>
+
+        <!-- Display messages -->
+        {% if messages %}
+            <div class="mb-4 space-y-2">
+                {% for message in messages %}
+                    <div class="p-4 rounded-lg text-sm font-medium 
+                        {% if message.tags == 'success' %}bg-green-50 text-green-800{% elif message.tags == 'error' %}bg-red-50 text-red-800{% elif message.tags == 'warning' %}bg-yellow-50 text-yellow-800{% elif message.tags == 'info' %}bg-blue-50 text-blue-800{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <p class="text-sm text-gray-600 dark:text-gray-300">
+            Are you sure you want to delete your account? This action cannot be undone, and your data will be permanently removed.
+        </p>
+
+        <form method="post" action="{% url 'delete_account' %}" class="space-y-4 md:space-y-6">
+            {% csrf_token %}
+            <div class="flex items-center justify-between">
+                <button type="submit" class="text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">
+                    Delete Account
+                </button>
+                <a href="{% url 'home' %}" class="text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

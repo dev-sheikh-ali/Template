@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet">
+    {% load static %}
+    <link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
+</head>
+<body class="bg-white dark:bg-gray-900">
+
+    <section class="flex items-center justify-center min-h-screen bg-white dark:bg-gray-900">
+        <div class="text-center">
+            <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/404/404-computer.svg" alt="404 Error" class="mx-auto mb-8 w-3/4 sm:w-2/3 md:w-1/2 lg:w-2/5 xl:w-1/3">
+            <h1 class="text-4xl font-bold text-primary-600 dark:text-primary-500 mb-4">404 Not Found</h1>
+            <p class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Whoops! That page doesn't exist.</p>
+            <p class="text-lg font-light text-gray-500 dark:text-gray-400 mb-8">Here are some helpful links instead:</p>
+            <div class="space-x-4">
+                <a href="/" class="text-primary-600 hover:underline dark:text-primary-500">Home</a>
+                <a href="#" class="text-primary-600 hover:underline dark:text-primary-500">Search</a>
+                <a href="#" class="text-primary-600 hover:underline dark:text-primary-500">Help</a>
+                <a href="#" class="text-primary-600 hover:underline dark:text-primary-500">Contact</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</body>
+</html>
