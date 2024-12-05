@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.dateparse import parse_date
+from allauth.socialaccount.providers.google.views import oauth2_login
 import logging
 
 logger = logging.getLogger(__name__)
@@ -48,3 +49,11 @@ def delete_account_view(request):
         return redirect('home')
 
     return render(request, 'account/delete_account.html')
+
+def google_login_view(request):
+    if request.method == 'GET':
+        # Render the custom Google login template
+        return render(request, 'account/google_login.html')
+    else:
+        # Redirect to the Google OAuth login page
+        return oauth2_login(request)
