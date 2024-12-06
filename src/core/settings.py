@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',  # Enabled Google provider
     'custom_auth',
     'home',
+    
 ]
 
 AUTHENTICATION_BACKENDS = [

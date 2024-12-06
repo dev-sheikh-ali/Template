@@ -14,5 +14,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),              # Django Allauth URLs
     path('auth/', include('custom_auth.urls')),              # Custom authentication app URLs
     path('', include('home.urls')),                          # Home app URLs (homepage and static pages)
-    path('pages/', include('pages.urls')),                   # Pages app URLs (About Us, Contact, etc.)
+    path('pages/', include('pages.urls')), 
+    
 ]
