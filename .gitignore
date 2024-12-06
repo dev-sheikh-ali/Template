@@ -1,0 +1,19 @@
+# Environment files
+.env
+src/.env
+
+# Python virtual environment
+venv/
+
+# SQLite database
+src/db.sqlite3
+
+# Compiled Python files
+__pycache__/
+
+# Django migrations
+src/*/migrations/
+
+# Temporary or OS-specific files
+*.log
+*.DS_Store
