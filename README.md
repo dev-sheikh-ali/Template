@@ -15,9 +15,6 @@ This Django SaaS platform includes several core features that are essential for 
 
 ## Features
 - **Custom User Authentication**: Registration, login, email verification, password reset, and profile management using Django Allauth.
-- **Shopping Cart & Checkout**: Add products to a shopping cart, proceed to checkout, and manage orders.
-- **Course Management**: View and manage educational content including videos, documents, and resources.
-- **Subscriptions**: Users can subscribe to services or newsletters.
 - **Pages Module**: Static pages such as FAQs, About Us, and Contact are handled through the `pages` app.
 - **Admin Interface**: Customizable Django admin panel to manage all models and users.
 - **Responsive Frontend**: Frontend designed using Tailwind CSS and Flowbite components.
@@ -30,30 +27,19 @@ The project is organized into several Django apps, each handling a distinct feat
 .
 ├── README.md
 └── src
-    ├── cart
-    ├── checkouts
     ├── core
-    ├── course
     ├── custom_auth
-    ├── customers
     ├── home
     ├── pages
-    ├── shop
-    ├── subscriptions
     ├── templates
     └── utils
 ```
 
-- **cart**: Handles cart-related logic like adding/removing items.
-- **checkouts**: Manages the checkout and payment process.
+
 - **core**: Contains main project settings, URLs, WSGI, and ASGI configurations.
-- **course**: Manages educational content and courses.
 - **custom_auth**: Handles user registration, login, profile updates, and authentication utilities.
-- **customers**: Stores customer-specific information.
 - **home**: Manages homepage views, static pages, and general content.
 - **pages**: Handles additional static pages, including error handling.
-- **shop**: Manages product listings and e-commerce-related features.
-- **subscriptions**: Allows users to manage their subscriptions.
 - **templates**: Contains reusable HTML templates for the frontend.
 - **utils**: Contains utility functions and reusable scripts (e.g., authentication helpers).
 
@@ -101,7 +87,6 @@ To set up the project locally, follow these steps:
 ## Usage
 - **Homepage**: Navigate to the homepage to view available products, courses, and services.
 - **User Authentication**: Register and log in to access personalized features.
-- **Cart and Checkout**: Add products to your cart and proceed to checkout.
 - **Profile Management**: Update your profile information from the profile page.
 - **Admin Access**: Access the admin panel at `/admin/` to manage the content and users.
 
