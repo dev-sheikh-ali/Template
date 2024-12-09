@@ -1,0 +1,106 @@
+{% extends "blog/blog_base.html" %}
+
+{% block blog_content %}
+<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+    <!-- Page Header -->
+    <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+        <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our Blog</h2>
+        <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">Explore articles, tutorials, and insights.</p>
+    </div>
+
+    <!-- Search and Category Filter -->
+    <form class="max-w-lg mx-auto mb-8" method="get" action="{% url 'blog:blog_list' %}">
+        <div class="flex items-center space-x-4">
+            <!-- Category Dropdown -->
+            <div class="relative">
+                <select
+                    name="category"
+                    class="block w-full md:w-64 p-3 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    onchange="this.form.submit()"
+                >
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                    <option
+                        value="{{ category.slug }}"
+                        {% if request.GET.category == category.slug %}selected{% endif %}
+                    >
+                        {{ category.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+
+            <!-- Search Input -->
+            <div class="relative w-full">
+                <input
+                    type="search"
+                    name="q"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    placeholder="Search articles..."
+                    value="{{ request.GET.q|default_if_none:'' }}"
+                />
+                <button
+                    type="submit"
+                    class="absolute top-0 right-0 px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700"
+                >
+                    Search
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Blog Posts Grid -->
+    <div class="grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+        {% for post in page_obj %}
+        <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            {% if post.cover_image %}
+            <img
+                src="{{ post.cover_image.url }}"
+                alt="{{ post.title }}"
+                class="rounded-lg mb-4 w-full h-48 object-cover"
+            >
+            {% endif %}
+            <div class="flex justify-between items-center mb-5 text-gray-500">
+                <span class="text-sm">{{ post.created_at|date:"M d, Y" }}</span>
+            </div>
+            <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            </h2>
+            <p class="mb-5 font-light text-gray-500 dark:text-gray-400">
+                {{ post.content|safe|truncatewords_html:30 }}
+            </p>
+            <div class="flex justify-between items-center">
+                <a
+                    href="{{ post.get_absolute_url }}"
+                    class="inline-flex items-center font-medium text-primary-600 dark:text-primary-500 hover:underline"
+                >
+                    Read more →
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination mt-8 flex justify-center">
+        {% if page_obj.has_previous %}
+        <a
+            href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}"
+            class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+        >
+            Previous
+        </a>
+        {% endif %}
+        <span class="mx-2">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+        <a
+            href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}"
+            class="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+        >
+            Next
+        </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

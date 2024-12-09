@@ -1,0 +1,44 @@
+<div class="comments mt-8">
+    <!-- Comments Header -->
+    <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Comments</h3>
+
+    <!-- Display Comments -->
+    {% for comment in post.comments.all %}
+    <div class="comment bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm mb-4">
+        <div class="flex items-center mb-2">
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mr-2">{{ comment.user.username }}</p>
+            <span class="text-sm text-gray-500 dark:text-gray-400">({{ comment.created_at|date:"F d, Y H:i" }})</span>
+        </div>
+        <p class="text-gray-800 dark:text-gray-300 mb-4">{{ comment.content }}</p>
+
+        <!-- Replies Section -->
+        {% if comment.replies.all %}
+        <div class="replies pl-4 border-l border-gray-300 dark:border-gray-600">
+            <h4 class="text-sm font-semibold mb-2 text-gray-700 dark:text-gray-400">Replies:</h4>
+            {% for reply in comment.replies.all %}
+            <div class="reply mb-2">
+                <p class="text-sm font-medium text-gray-900 dark:text-white">{{ reply.user.username }}</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300">{{ reply.content }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <!-- Add Comment Section -->
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'blog:add_comment' post.slug %}" class="mt-6 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+        {% csrf_token %}
+        <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Add a Comment</label>
+        <textarea id="comment" name="content" rows="4" class="block w-full p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your comment..." required></textarea>
+        <button type="submit" class="mt-4 px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+            Submit
+        </button>
+    </form>
+    {% else %}
+    <p class="mt-6 text-gray-600 dark:text-gray-400">
+        <a href="{% url 'account_login' %}" class="text-blue-600 hover:underline">Log in</a> to add a comment.
+    </p>
+    {% endif %}
+</div>

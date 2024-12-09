@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from blog.models import BlogPost
 from .models import HeroSection, Feature, Newsletter, NewsletterSubscription, NavbarBanner
 from .forms import NewsletterSubscriptionForm
 
@@ -8,6 +9,9 @@ def home_view(request):
     features = Feature.objects.all()
     newsletter = Newsletter.objects.first()
     navbar_banner = NavbarBanner.objects.filter(is_active=True).first()
+
+    # Fetch featured blog articles
+    featured_posts = BlogPost.objects.filter(status='published', featured=True).order_by('-created_at')[:5]
 
     form = NewsletterSubscriptionForm(request.POST or None)
 
@@ -26,5 +30,6 @@ def home_view(request):
         'newsletter': newsletter,
         'form': form,
         'banner': navbar_banner,
+        'featured_posts': featured_posts,  # Add featured blog articles to the context
     }
     return render(request, 'home/home.html', context)

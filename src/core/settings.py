@@ -27,6 +27,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',  # Enabled Google provider
     'custom_auth',
     'home',
+    'pages',
+    'blog',
+    'django_ckeditor_5'
+    
     
 ]
 
@@ -112,6 +116,12 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -153,4 +163,36 @@ SOCIALACCOUNT_PROVIDERS = {
         'CLIENT_ID': config('GOOGLE_CLIENT_ID'),
         'SECRET': config('GOOGLE_CLIENT_SECRET'),
     }
+}
+
+# CKEditor 5 Configuration
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
+            'blockQuote', 'imageUpload', 'insertTable', 'mediaEmbed', 'undo', 'redo'
+        ],
+        'image': {
+            'toolbar': [
+                'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight', '|',
+                'imageTextAlternative'
+            ],
+        },
+        'table': {
+            'contentToolbar': [
+                'tableColumn', 'tableRow', 'mergeTableCells'
+            ],
+        },
+        'mediaEmbed': {
+            'previewsInData': True,
+        },
+        'height': 500,
+        'width': 'auto',
+    }
+}
+
+CKEDITOR_5_UPLOADS = {
+    'FUNCTIONALITY': 'IMAGE_AND_VIDEO_UPLOADS',  # Adjust as per requirements
+    'MAX_UPLOAD_SIZE': 5242880,  # 5 MB max upload size
+    'UPLOAD_TO': 'uploads/'  # Media upload directory
 }

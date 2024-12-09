@@ -1,0 +1,41 @@
+{% extends "blog/blog_base.html" %}
+
+{% block blog_content %}
+<section class="py-8 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white">Articles by {{ author.username }}</h1>
+            <p class="mt-2 text-gray-600 dark:text-gray-400">Explore the latest posts by {{ author.username }}.</p>
+        </header>
+
+        <!-- Articles Grid -->
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {% for post in posts %}
+            <article class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
+                <!-- Article Header -->
+                <h2 class="text-xl font-bold mb-2">
+                    <a href="{{ post.get_absolute_url }}" class="text-gray-900 dark:text-white hover:underline">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p class="text-sm text-gray-500 mb-4">Published on {{ post.created_at|date:"F d, Y" }}</p>
+
+                <!-- Article Content -->
+                <p class="text-gray-700 dark:text-gray-300 mb-4">
+                    {{ post.content|truncatewords:25 }}
+                </p>
+
+                <!-- Read More Link -->
+                <a href="{{ post.get_absolute_url }}" class="inline-flex items-center text-primary-600 dark:text-primary-400 font-medium hover:underline">
+                    Read more
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
