@@ -164,19 +164,29 @@ SOCIALACCOUNT_PROVIDERS = {
         'SECRET': config('GOOGLE_CLIENT_SECRET'),
     }
 }
-
 # CKEditor 5 Configuration
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': [
-            'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList',
-            'blockQuote', 'imageUpload', 'insertTable', 'mediaEmbed', 'undo', 'redo'
+            'heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough',
+            'code', 'subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing', 'insertImage',
+            'bulletedList', 'numberedList', 'todoList', '|', 'blockQuote', 'imageUpload', '|',
+            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'mediaEmbed', 'removeFormat',
+            'insertTable',
         ],
         'image': {
             'toolbar': [
-                'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight', '|',
-                'imageTextAlternative'
+                'imageTextAlternative', '|', 'imageStyle:alignLeft',
+                'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side', '|'
             ],
+            'styles': [
+                'full',
+                'side',
+                'alignLeft',
+                'alignRight',
+                'alignCenter',
+            ],
+            'lazyLoad': True
         },
         'table': {
             'contentToolbar': [
@@ -191,8 +201,4 @@ CKEDITOR_5_CONFIGS = {
     }
 }
 
-CKEDITOR_5_UPLOADS = {
-    'FUNCTIONALITY': 'IMAGE_AND_VIDEO_UPLOADS',  # Adjust as per requirements
-    'MAX_UPLOAD_SIZE': 5242880,  # 5 MB max upload size
-    'UPLOAD_TO': 'uploads/'  # Media upload directory
-}
+

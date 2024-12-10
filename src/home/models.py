@@ -47,3 +47,17 @@ class NavbarBanner(models.Model):
 
     def __str__(self):
         return self.message
+
+
+class TeamMember(models.Model):
+    name = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)
+    bio = models.TextField()
+    image_url = models.URLField(max_length=500, blank=True, null=True)
+    facebook_url = models.URLField(max_length=500, blank=True, null=True)
+    twitter_url = models.URLField(max_length=500, blank=True, null=True)
+    linkedin_url = models.URLField(max_length=500, blank=True, null=True)
+    github_url = models.URLField(max_length=500, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
