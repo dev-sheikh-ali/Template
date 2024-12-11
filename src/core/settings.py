@@ -150,6 +150,8 @@ AUTH_USER_MODEL = 'custom_auth.CustomUser'
 # Allow user deletion
 ACCOUNT_ALLOW_USER_DELETION = True
 
+SUPPORT_TEAM_EMAIL = config("SUPPORT_TEAM_EMAIL", default="abdirahman.dev44@gmail.com")
+
 # Socialaccount settings for Google OAuth
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

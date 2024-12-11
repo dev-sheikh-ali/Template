@@ -3,32 +3,129 @@
 {% block title %}Contact Us{% endblock %}
 
 {% block content %}
-<section class="bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-lg bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700 p-6 space-y-8 sm:p-8">
-        <h2 class="text-4xl font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
-        <p class="text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-xl">
+        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contact Us</h2>
+        <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
             Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.
         </p>
+        <!-- Dynamic Info Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+    <!-- Company Information -->
+    {% for info in company_infos %}
+    <div class="text-center bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg transition hover:shadow-2xl">
+        <div class="flex justify-center items-center mb-4 w-16 h-16 bg-primary-500 dark:bg-primary-400 text-white rounded-full">
+            {% if info.icon_svg %}
+                <div class="w-10 h-10">
+                    {{ info.icon_svg|safe }}
+                </div>
+            {% else %}
+                <span class="text-xl font-bold">CI</span> <!-- Placeholder -->
+            {% endif %}
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ info.name }}</h3>
+        {% if info.description %}
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">{{ info.description }}</p>
+        {% endif %}
+        {% if info.linkedin_url %}
+        <a href="{{ info.linkedin_url }}" class="text-primary-500 hover:underline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        {% endif %}
+    </div>
+    {% endfor %}
 
-        <form action="#" class="space-y-6">
-            <div>
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                <input type="email" id="email" class="block w-full p-2.5 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm text-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name@flowbite.com" required>
-            </div>
-            <div>
-                <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
-                <input type="text" id="subject" class="block w-full p-3 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm text-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Let us know how we can help you" required>
-            </div>
-            <div>
-                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
-                <textarea id="message" rows="6" class="block w-full p-2.5 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm text-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..." required></textarea>
-            </div>
-            <div class="flex justify-center">
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Send message
-                </button>
-            </div>
-        </form>
+    <!-- Address -->
+    {% for address in addresses %}
+    <div class="text-center bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg transition hover:shadow-2xl">
+        <div class="flex justify-center items-center mb-4 w-16 h-16 bg-primary-500 dark:bg-primary-400 text-white rounded-full">
+            {% if address.icon_svg %}
+                <div class="w-10 h-10">
+                    {{ address.icon_svg|safe }}
+                </div>
+            {% else %}
+                <span class="text-xl font-bold">AD</span> <!-- Placeholder -->
+            {% endif %}
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ address.name }}</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">{{ address.address }}</p>
+    </div>
+    {% endfor %}
+
+    <!-- Contact Us -->
+    {% for contact in contact_infos %}
+    <div class="text-center bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg transition hover:shadow-2xl">
+        <div class="flex justify-center items-center mb-4 w-16 h-16 bg-primary-500 dark:bg-primary-400 text-white rounded-full">
+            {% if contact.icon_svg %}
+                <div class="w-10 h-10">
+                    {{ contact.icon_svg|safe }}
+                </div>
+            {% else %}
+                <span class="text-xl font-bold">CU</span> <!-- Placeholder -->
+            {% endif %}
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{{ contact.name }}</h3>
+        {% if contact.description %}
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">{{ contact.description }}</p>
+        {% endif %}
+        <strong class="text-gray-900 dark:text-white">{{ contact.contact_email }}</strong>
+    </div>
+    {% endfor %}
+</div>
+
+        <!-- Form Section -->
+        <div class="grid grid-cols-1">
+            <form action="{% url 'contact' %}" method="post" class="space-y-6">
+                {% csrf_token %}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First Name</label>
+                        <input type="text" name="first_name" id="first_name" value="{{ form.first_name.value|default:'' }}"
+                               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                               placeholder="John" required>
+                    </div>
+                    <div>
+                        <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Last Name</label>
+                        <input type="text" name="last_name" id="last_name" value="{{ form.last_name.value|default:'' }}"
+                               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                               placeholder="Doe" required>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your Email</label>
+                        <input type="email" name="email" id="email" value="{{ form.email.value|default:'' }}"
+                               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                               placeholder="name@example.com" required>
+                    </div>
+                    <div>
+                        <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Phone Number</label>
+                        <input type="tel" name="phone_number" id="phone_number" value="{{ form.phone_number.value|default:'' }}"
+                               class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                               placeholder="+1 234 567 890" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
+                    <input type="text" name="subject" id="subject" value="{{ form.subject.value|default:'' }}"
+                           class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                           placeholder="Let us know how we can help you" required>
+                </div>
+                <div>
+                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your Message</label>
+                    <textarea name="message" id="message" rows="6"
+                              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                              placeholder="Type your message here..." required>{{ form.message.value|default:'' }}</textarea>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Send message
+                    </button>
+                </div>
+                
+            </form>
+        </div>
     </div>
 </section>
-{% endblock %}
+  <!-- Newsletter Section -->
+  <!-- {% include 'home/newsletter.html' %} -->
+
+{% endblock %} 
