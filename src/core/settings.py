@@ -8,7 +8,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='').split(',')
 
 # Application definition
 
@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',  # Enabled Google provider
+    'allauth.socialaccount.providers.google',  
     'custom_auth',
     'home',
     'pages',
@@ -65,10 +65,10 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',  # This is required for allauth
+                'django.template.context_processors.request',  
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # Removed the incorrect context processor
+                
             ],
         },
     },
