@@ -4,7 +4,7 @@
 Welcome to the Django SaaS project! This application is a scalable software-as-a-service (SaaS) platform built with Django. It features user authentication, blog functionality, working contact page and more. Below you will find details about the project structure, core features, and setup instructions to get started.
 ## Description
 
-### DEMO: [Google Drive Clone]()
+### DEMO: [Template]()
 
 <table width="100%"> 
 <tr>
