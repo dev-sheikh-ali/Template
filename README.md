@@ -1,6 +1,29 @@
 # Django SaaS Application
 
-Welcome to the Django SaaS project! This application is a scalable software-as-a-service (SaaS) platform built with Django. It features user authentication, e-commerce functionality, course management, and more. Below you will find details about the project structure, core features, and setup instructions to get started.
+
+Welcome to the Django SaaS project! This application is a scalable software-as-a-service (SaaS) platform built with Django. It features user authentication, blog functionality, working contact page and more. Below you will find details about the project structure, core features, and setup instructions to get started.
+## Description
+
+### DEMO: [Google Drive Clone]()
+
+<table width="100%"> 
+<tr>
+<td width="50%">      
+&nbsp; 
+<br>
+<p align="center">
+  ADMIN
+</p>
+<kbd><img src="./src/media/images/admin.png" /></kbd>
+</td> 
+<td width="50%">
+<br>
+<p align="center">
+  CLIENT
+</p>
+<img src="./src/media/images/client.png">  
+</td>
+</table>
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
@@ -11,7 +34,7 @@ Welcome to the Django SaaS project! This application is a scalable software-as-a
 6. [Technologies Used](#technologies-used)
 
 ## Project Overview
-This Django SaaS platform includes several core features that are essential for a SaaS application. It contains custom authentication, shopping cart, checkout functionality, course and subscription management, and more. This project can serve as a template for a wide variety of SaaS applications, ranging from online learning platforms to e-commerce solutions.
+This Django SaaS platform includes several core features that are essential for a SaaS application. This project can serve as a template for a wide variety of SaaS applications.
 
 ## Features
 - **Custom User Authentication**: Registration, login, email verification, password reset, and profile management using Django Allauth.
@@ -32,7 +55,13 @@ The project is organized into several Django apps, each handling a distinct feat
     ├── home
     ├── pages
     ├── templates
-    └── utils
+    ├── utils
+    ├── blog
+    ├── .env
+    └── manage.py
+
+└── venv
+
 ```
 
 
@@ -60,11 +89,26 @@ To set up the project locally, follow these steps:
 
 3. **Install dependencies**:
    ```sh
+   cd src
    pip install -r requirements.txt
    ```
 
 4. **Configure environment variables**:
-   Create a `.env` file in the root directory and add the necessary environment variables (e.g., `SECRET_KEY`, `DEBUG`, `DATABASE_URL`).
+   Create a `.env` file in the root directory and add the necessary environment variables:
+
+   - `DJANGO_SECRET_KEY`="xyz"
+   - `DJANGO_DEBUG`=0
+   - `EMAIL_BACKEND`="django.core.mail.backends.smtp.EmailBackend"
+   - `EMAIL_HOST`="smtp.gmail.com"
+   - `EMAIL_PORT`=587
+   - `EMAIL_USE_TLS`=True
+   - `EMAIL_HOST_USER`="abcd@gmail.com"
+   - `EMAIL_HOST_PASSWORD`="pass"
+   - `DEFAULT_FROM_EMAIL`=""
+   - `SUPPORT_TEAM_EMAIL`=""
+   - `GOOGLE_CLIENT_ID`=""
+   - `GOOGLE_CLIENT_SECRET`=""
+   - `DJANGO_ALLOWED_HOSTS`="127.0.0.1,domain/ip"
 
 5. **Apply migrations**:
    ```sh
@@ -98,4 +142,16 @@ To set up the project locally, follow these steps:
 - **Other**: JavaScript for interactivity, Flowbite for enhanced styling and components
 
 Feel free to contribute by submitting pull requests or reporting issues.
+
+## Issues to fix 
+
+   1. **Customise AllAuth Email Verification**: Improve the email verification flow to better match your application’s requirements.
+   2. **Errors/Success Messages in Auth Pages**: Ensure proper display of error and success messages in authentication pages.
+   3. **Use Utils for Custom Email Templates**: Centralize email template logic by leveraging utility functions.
+   4. **Profile – Add Photo**: Allow users to upload and manage profile pictures.
+   5. **Make Services Page Dynamic**: Implement dynamic rendering of services based on database or CMS content.
+   6. **Improve Newsletter**: Use a modular approach to enhance the newsletter feature.
+   7. **Make Delete Account a Soft Delete**: Convert account deletion into a soft delete with verification requirements.
+   8. **Frontend Changes**: Apply necessary improvements to frontend pages for better UI/UX.
+
 
