@@ -3,12 +3,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from pages import urls as pages_urls
+from pages.views import CustomErrorView
 
-# Custom error handlers imported from pages.urls
-handler400 = pages_urls.handler400
-handler403 = pages_urls.handler403
-handler404 = pages_urls.handler404
-handler500 = pages_urls.handler500
+# Custom error handlers
+handler400 = CustomErrorView.as_view(status_code=400)
+handler403 = CustomErrorView.as_view(status_code=403)
+handler404 = CustomErrorView.as_view(status_code=404)
+handler500 = CustomErrorView.as_view(status_code=500)
 
 urlpatterns = [
     path('admin/', admin.site.urls),                         # Admin panel

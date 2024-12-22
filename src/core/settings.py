@@ -8,7 +8,11 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='').split(',')
+# ALLOWED_HOSTS configuration
+ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='127.0.0.1').split(',')
+
+# CSRF trusted origins
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='').split(',')
 
 # Application definition
 
@@ -30,8 +34,6 @@ INSTALLED_APPS = [
     'pages',
     'blog',
     'django_ckeditor_5'
-    
-    
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -68,7 +70,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',  
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
             ],
         },
     },
@@ -120,8 +121,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
-
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -166,6 +165,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'SECRET': config('GOOGLE_CLIENT_SECRET'),
     }
 }
+
 # CKEditor 5 Configuration
 CKEDITOR_5_CONFIGS = {
     'default': {
@@ -202,5 +202,3 @@ CKEDITOR_5_CONFIGS = {
         'width': 'auto',
     }
 }
-
-
